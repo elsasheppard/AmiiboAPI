@@ -1,7 +1,8 @@
-package com.example.amiiboapi
+package com.example.amiiboapi.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.amiiboapi.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
