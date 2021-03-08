@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        loadAmiibos()
     }
 
     private fun loadAmiibos() {
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                 // Log.d(TAG, "onResponse: " + Amiibo)
                 if (response.isSuccessful){
                     val amiiboList = response.body()?.amiibo ?: emptyList<Amiibo>()
+                    Log.d(TAG, "onResponse: ${response.body()}")
                     Log.d("Response", "countrylist size : ${amiiboList.size}")
                     amiibo_recycler.apply {
                         setHasFixedSize(true)
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }else{
                     Toast.makeText(this@MainActivity, "Something went wrong ${response.message()}", Toast.LENGTH_SHORT).show()
+                    Log.d(TAG,"Something went wrong ${response.message()}")
                 }
             }
 

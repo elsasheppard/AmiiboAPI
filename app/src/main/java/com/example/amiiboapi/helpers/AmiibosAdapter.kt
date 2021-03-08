@@ -1,5 +1,6 @@
 package com.example.amiiboapi.helpers
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -43,6 +44,17 @@ class AmiibosAdapter(private val amiibosList: List<Amiibo>) : RecyclerView.Adapt
             itemView.tvName.text = amiibo.name          // same here as ^
             itemView.tvAmiiboSeries.text = amiibo.amiiboSeries
             itemView.tvGameSeries.text = amiibo.gameSeries
+            itemView.setOnClickListener {
+                // the first argument in the tented is the context, usually, that's the current activity
+                // but if you aren't in the activity class, you can access the context through the available view
+
+                val specificAmiiboIntent = Intent(itemView.context, AmiiboDetailActivity::class.java)
+                specificAmiiboIntent.putExtra(AmiiboDetailActivity.EXTRA_AMIIBO, amiibo)
+
+                // starting the activity required no object to call it on in an Activity class
+                // since we're not in an Activity class, we call it through the context
+                itemView.context.startActivity(specificAmiiboIntent)
+            }
             Picasso.get().load(amiibo.image).into(itemView.ivAmiibo)
         }
 
