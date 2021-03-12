@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.amiiboapi.R
+import com.example.amiiboapi.activities.AmiiboDetailActivity
 import com.example.amiiboapi.models.Amiibo
 import com.example.amiiboapi.models.AmiiboWrapper
 import com.squareup.picasso.Picasso
@@ -45,9 +46,8 @@ class AmiibosAdapter(private val amiibosList: List<Amiibo>) : RecyclerView.Adapt
             itemView.tvAmiiboSeries.text = amiibo.amiiboSeries
             itemView.tvGameSeries.text = amiibo.gameSeries
             itemView.setOnClickListener {
-                // the first argument in the tented is the context, usually, that's the current activity
+                // the first argument in the intent is the context, usually, that's the current activity
                 // but if you aren't in the activity class, you can access the context through the available view
-
                 val specificAmiiboIntent = Intent(itemView.context, AmiiboDetailActivity::class.java)
                 specificAmiiboIntent.putExtra(AmiiboDetailActivity.EXTRA_AMIIBO, amiibo)
 
