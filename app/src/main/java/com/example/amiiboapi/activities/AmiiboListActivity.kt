@@ -32,9 +32,8 @@ class AmiiboListActivity : AppCompatActivity() {
 
         // below - one way user input could be utilized to search for a specific amiibo
         // check if they didn't type anything, and give default if so
-             val amiibo = etSearch.text.toString()
-                 // .getAmiiboList(amiibo)
-         val requestCall = destinationService.getAmiiboList(amiibo)
+        val amiibo = intent.getStringExtra(EXTRA_SEARCH) ?: "Link"
+        val requestCall = destinationService.getAmiiboList(amiibo)
 
         requestCall.enqueue(object : Callback<AmiiboWrapper> {
             override fun onResponse(call: Call<AmiiboWrapper>, response: Response<AmiiboWrapper>) {
@@ -59,6 +58,10 @@ class AmiiboListActivity : AppCompatActivity() {
                 Log.d(TAG, "onFailure" + t.message)
             }
         } )
+    }
+
+    companion object {
+        val EXTRA_SEARCH = "search"
     }
 }
 
