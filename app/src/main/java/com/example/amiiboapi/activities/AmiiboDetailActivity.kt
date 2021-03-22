@@ -1,10 +1,12 @@
 package com.example.amiiboapi.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.example.amiiboapi.R
 import com.example.amiiboapi.models.Amiibo
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_amiibo_detail.*
 
 class AmiiboDetailActivity : AppCompatActivity() {
 
@@ -18,6 +20,7 @@ class AmiiboDetailActivity : AppCompatActivity() {
         val amiibo = intent.getParcelableExtra<Amiibo>(EXTRA_AMIIBO)
         Log.d(TAG, "onCreate" + amiibo)
 
+        Picasso.get().load(amiibo?.image).into(ivBigAmiibo)
     }
 
     companion object {

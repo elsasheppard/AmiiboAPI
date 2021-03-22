@@ -9,11 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.amiiboapi.R
 import com.example.amiiboapi.activities.AmiiboDetailActivity
 import com.example.amiiboapi.models.Amiibo
-import com.example.amiiboapi.models.AmiiboWrapper
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.amiibo_item.view.*
-import retrofit2.Call
-import java.util.concurrent.RecursiveAction
 
 class AmiibosAdapter(private val amiibosList: List<Amiibo>) : RecyclerView.Adapter<AmiibosAdapter.ViewHolder>() {
 
@@ -45,6 +42,7 @@ class AmiibosAdapter(private val amiibosList: List<Amiibo>) : RecyclerView.Adapt
             itemView.tvName.text = amiibo.name          // same here as ^
             itemView.tvAmiiboSeries.text = amiibo.amiiboSeries
             itemView.tvGameSeries.text = amiibo.gameSeries
+
             itemView.setOnClickListener {
                 // the first argument in the intent is the context, usually, that's the current activity
                 // but if you aren't in the activity class, you can access the context through the available view
